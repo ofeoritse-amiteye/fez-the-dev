@@ -23,11 +23,7 @@
 	}
 </script>
 
-<header class="fixed inset-x-0 top-0 z-[60] px-4 pt-4 sm:px-6 lg:px-10">
-	<div
-		class="grain-overlay pointer-events-none absolute inset-x-12 top-[38%] h-44 opacity-[0.1]"
-		aria-hidden="true"
-	></div>
+<header class="fixed inset-x-0 top-0 z-[60] px-4 pt-4 sm:px-6 lg:px-10 ">
 	<div
 		class="mx-auto flex max-w-[88rem] items-center justify-between gap-3 rounded-[1.5rem] border border-[var(--glass-border)] bg-[var(--surface-1)] px-4 py-3 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] sm:px-6 sm:py-3.5"
 	>
