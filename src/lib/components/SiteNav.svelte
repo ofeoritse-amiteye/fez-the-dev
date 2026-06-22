@@ -5,8 +5,8 @@
 	import { theme, toggleTheme } from '$lib/theme.svelte';
 
 	const links = [
-		{ href: '/#control', label: 'Control' },
-		{ href: '/#work', label: 'Work' },
+		{ href: '/#focus', label: 'Focus' },
+		{ href: '/#work', label: 'My projects' },
 		{ href: '/#skills', label: 'Stack' },
 		{ href: '/#contact', label: 'Contact' }
 	];
@@ -23,14 +23,14 @@
 	}
 </script>
 
-<header class="fixed inset-x-0 top-0 z-[60] px-4 pt-4 sm:px-6 lg:px-10 ">
+<header class="fixed inset-x-0 top-0 z-[60] px-4 pt-4 sm:px-6 lg:px-10 pb-2 ">
 	<div
 		class="mx-auto flex max-w-[88rem] items-center justify-between gap-3 rounded-[1.5rem] border border-[var(--glass-border)] bg-[var(--surface-1)] px-4 py-3 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] sm:px-6 sm:py-3.5"
 	>
 		<a href="/" class="focus-ring rounded-[1rem] px-3 py-2">
 			<p class="font-display text-base font-semibold tracking-[-0.03em]">{profile.shortName}</p>
 			<p class="font-mono text-[0.62rem] tracking-[0.22em] text-[var(--text-muted)] uppercase hidden lg:block">
-			Frontend Focused, Full stack Capable
+				Frontend-focused, full-stack capable
 			</p>
 		</a>
 

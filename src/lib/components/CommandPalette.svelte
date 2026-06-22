@@ -2,7 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { closeCommandPalette, palette, toggleCommandPalette } from '$lib/commandPalette.svelte';
-	import { profile } from '$lib/data/portfolio';
+import { emailHref, profile } from '$lib/data/portfolio';
 	import { projects } from '$lib/data/projects';
 	import { setTheme, theme, toggleTheme } from '$lib/theme.svelte';
 
@@ -30,15 +30,15 @@
 			run: () => goto('/')
 		},
 		{
-			id: 'control',
-			label: 'Jump to control room',
+			id: 'focus',
+			label: 'Jump to focus lanes',
 			hint: 'Navigation',
 			keywords: 'focus tracks systems',
-			run: () => goto('/#control')
+			run: () => goto('/#focus')
 		},
 		{
 			id: 'work',
-			label: 'Jump to selected builds',
+			label: 'Jump to my projects',
 			hint: 'Navigation',
 			keywords: 'projects case studies showcase',
 			run: () => goto('/#work')
@@ -72,7 +72,7 @@
 			hint: 'Contact',
 			keywords: 'mail reach out',
 			run: () => {
-				window.location.href = `mailto:${profile.email}`;
+				window.location.href = emailHref;
 			}
 		},
 		{
@@ -198,7 +198,7 @@
 					<input
 						bind:this={input}
 						bind:value={query}
-						class="focus-ring min-w-0 flex-1 border-0 bg-transparent py-2 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text-muted)]"
+						class="focus-ring min-w-0 flex-1 border-0 bg-transparent rounded-lg py-2 text-sm text-[var(--text)] outline-none placeholder:text-[var(--text-muted)]"
 						placeholder="Type a section, project, or action..."
 						autocomplete="off"
 						autocapitalize="off"
@@ -244,7 +244,7 @@
 					</li>
 				{:else}
 					<li class="px-4 py-8 text-center font-mono text-xs text-[var(--text-muted)]">
-						No matches yet. Try "work", "resume", "theme", or a project name.
+						No matches yet. Try "projects", "resume", "theme", or a project name.
 					</li>
 				{/each}
 			</ul>

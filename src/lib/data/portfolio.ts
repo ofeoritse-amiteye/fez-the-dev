@@ -1,4 +1,4 @@
-export type SocialPlatform = 'github' | 'email' | 'phone' | 'whatsapp';
+export type SocialPlatform = 'github' | 'linkedin' | 'email' | 'phone' | 'whatsapp';
 
 export type SocialLink = {
 	label: string;
@@ -40,28 +40,35 @@ export type ExperienceEntry = {
 export const profile = {
 	name: 'Amiteye Favour Ofeoritse',
 	shortName: 'Ofeoritse',
-	heroLabel: 'Frontend developer and full-stack engineer',
-	eyebrow: 'Realtime products, AI tooling, and money-safe interfaces',
+	heroLabel: 'Frontend Developer · Full-Stack Engineer',
+	eyebrow: 'Realtime products, AI tooling, and payment-ready interfaces',
 	location: 'Lagos, Nigeria',
 	email: 'ofeoritseamiteye03@gmail.com',
 	phone: '+234 912 207 2401',
 	phoneHref: 'tel:+2349122072401',
 	githubUrl: 'https://github.com/ofeoritse-amiteye',
 	githubHandle: 'github.com/ofeoritse-amiteye',
+	linkedinUrl: 'https://www.linkedin.com/in/ofeoritse-amiteye-760527263',
+	linkedinHandle: 'linkedin.com/in/ofeoritse-amiteye-760527263',
 	whatsAppUrl: 'https://wa.me/2349122072401',
-	resumeHref: '/ofeoritse-amiteye-resume-2026.pdf',
+	resumeHref: '/AMITEYE_OFEORITSE_RESUME(JUNE).pdf',
 	profileImage: '/ofeoritse-profile.jpg',
 	intro:
-		'I build real product experiences that stay polished under pressure: real-time systems, AI-assisted workflows, secure messaging, browser extensions, and fintech surfaces that have to earn trust.',
+		'Frontend-focused full-stack engineer with 4+ years building production web and mobile apps across AI tools, secure realtime systems, and fintech platforms with live payment flows.',
 	summary:
-		'Frontend-focused full-stack engineer with 4+ years shipping production web and mobile applications. Strong in React, Next.js, TypeScript, Node.js, realtime architecture, secure auth, and payment flows.',
+		'Strong in React, Next.js, TypeScript, and Node.js with hands-on experience in SSE/WebSockets, secure authentication, Paystack integrations, and end-to-end product delivery.',
 	availability:
-		'Open to frontend engineering, product engineering, and freelance builds that need both speed and rigor.'
+		'Open to frontend and product engineering roles, plus selective full-stack freelance builds.'
 };
+
+export const emailHref = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+	profile.email
+)}`;
 
 export const socialLinks: SocialLink[] = [
 	{ label: 'GitHub', href: profile.githubUrl, external: true, platform: 'github' },
-	{ label: 'Email', href: `mailto:${profile.email}`, platform: 'email' },
+	{ label: 'LinkedIn', href: profile.linkedinUrl, external: true, platform: 'linkedin' },
+	{ label: 'Email', href: emailHref, external: true, platform: 'email' },
 	{ label: 'Call', href: profile.phoneHref, platform: 'phone' },
 	{ label: 'WhatsApp', href: profile.whatsAppUrl, external: true, platform: 'whatsapp' }
 ];
@@ -69,6 +76,7 @@ export const socialLinks: SocialLink[] = [
 /** Hero / contact chip backgrounds (brand-aligned, solid) */
 export const socialChipTone: Record<SocialPlatform, string> = {
 	github: 'border-[#24292f] bg-[#24292f] text-white hover:brightness-110',
+	linkedin: 'border-[#0a66c2] bg-[#0a66c2] text-white hover:brightness-105',
 	email: 'border-[#b3261e] bg-[#EA4335] text-white hover:brightness-105',
 	phone: 'border-[#0f766e] bg-[#14b8a6] text-white hover:brightness-105',
 	whatsapp: 'border-[#128C7E] bg-[#25D366] text-white hover:brightness-105'
@@ -206,48 +214,85 @@ export const focusTracks: FocusTrack[] = [
 export const skillGroups: SkillGroup[] = [
 	{
 		title: 'Frontend systems',
-		items: ['React 18', 'Next.js 16', 'TypeScript', 'Tailwind CSS v4', 'Radix UI', 'HTML5', 'CSS3']
+		items: [
+			'React 18',
+			'Next.js 16',
+			'React Native (Expo)',
+			'TypeScript',
+			'JavaScript (ES6+)',
+			'Tailwind CSS v4',
+			'Radix UI',
+			'HTML5',
+			'CSS3'
+		]
 	},
 	{
 		title: 'Backend and realtime',
 		items: [
 			'Node.js',
-			'Django',
+			'Django (Python)',
 			'REST APIs',
 			'WebSockets',
 			'Server-Sent Events',
-			'Prisma',
+			'Prisma ORM',
+			'Axios',
 			'Nodemailer'
 		]
 	},
 	{
 		title: 'Data, auth, and product state',
-		items: ['MongoDB', 'Firebase', 'MySQL', 'IndexedDB', 'TanStack Query', 'Zustand', 'Zod']
+		items: [
+			'MongoDB',
+			'Firebase (Firestore & Auth)',
+			'MySQL',
+			'IndexedDB',
+			'TanStack Query v5',
+			'Zustand',
+			'React Hook Form',
+			'Zod'
+		]
 	},
 	{
-		title: 'Tooling and infrastructure',
+		title: 'Payments, auth, and security',
+		items: ['Paystack', 'JWT (jose)', 'bcrypt', 'OTP flows', 'OAuth-style integrations', 'Rate limiting']
+	},
+	{
+		title: 'Infrastructure and monitoring',
 		items: [
 			'GitHub',
 			'Vercel',
 			'Cloudflare',
+			'Pusher',
 			'PostHog',
 			'Sentry',
+			'Chrome Extension APIs',
 			'Postman',
-			'Chrome Extension APIs'
+			'React Router v7'
 		]
 	}
 ];
 
 export const experienceTimeline: ExperienceEntry[] = [
 	{
-		role: 'IT Support / System Engineer',
+		role: 'Software Engineer (Full-stack)',
 		timeline: 'July 2025-present',
+		company: 'TrimHQ',
+		location: 'Remote',
+		details: [
+			'Architected a creator-brand marketplace with campaign workflows, contract tooling, and dual-sided dashboards.',
+			'Implemented Paystack wallet deposits, withdrawals, webhook reconciliation, and transaction PIN security.',
+			'Migrated file storage to Cloudflare R2, replaced SSE with Pusher, and added Sentry + PostHog monitoring.'
+		]
+	},
+	{
+		role: 'IT Support / System Engineer',
+		timeline: 'July 2025-May 2026',
 		company: 'TopTech Engineering Ltd',
 		location: 'Lagos, Nigeria',
 		details: [
-			'Designed and developed an internal ticketing and support system that reduced average issue resolution time.',
-			'Provided end-to-end technical support for networking and hardware across multiple environments.',
-			'Maintained near-zero downtime across 20+ devices and systems.'
+			'Designed and built an internal ticketing system that streamlined issue reporting and resolution.',
+			'Delivered end-to-end technical support for networking, hardware, and connectivity across 20+ devices.',
+			'Operated specialized data sanitization equipment in line with hardware handling standards.'
 		]
 	},
 	{
@@ -256,20 +301,20 @@ export const experienceTimeline: ExperienceEntry[] = [
 		company: 'Self-employed',
 		location: 'Remote',
 		details: [
-			'Designed, developed, and deployed 4+ web and mobile applications across e-commerce, logistics, and education.',
-			'Built a content creator marketplace with real-time messaging, campaign workflows, and payout infrastructure.',
-			'Maintained client products after launch and kept reliability high under real usage.'
+			'Designed and delivered 4+ full-stack web and mobile applications across e-commerce, logistics, and education.',
+			'Built a fantasy sports platform with live scoring, matchmaking, and regional leaderboards.',
+			'Provided ongoing support to keep client products stable after launch.'
 		]
 	},
 	{
-		role: 'ICT Intern',
+		role: 'IT Specialist',
 		timeline: 'Mar 2023-Aug 2023',
-		company: 'Heritage Energy Operational Services Ltd',
+		company: 'Heritage Energy Operational Services Ltd (HEOSL)',
 		location: 'Warri, Delta State',
 		details: [
-			'Built a Django-based computer-based testing platform that automated internship recruitment.',
-			'Developed a hospital management system prototype under production-style constraints.',
-			'Delivered hardware and software support across 50+ staff workflows.'
+			'Built a Django-based testing platform that automated internship recruitment workflows.',
+			'Developed a hospital management system prototype across HTML/CSS/PHP and Django.',
+			'Delivered IT support and diagnostics across 50+ staff devices and systems.'
 		]
 	}
 ];

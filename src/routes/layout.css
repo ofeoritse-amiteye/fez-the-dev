@@ -299,9 +299,11 @@ body {
 
 /* Hero marquee outline: readable on dark + light */
 .hero-marquee {
-	-webkit-text-stroke: 1px rgba(255, 255, 255, 0.12);
+	color: rgba(255, 255, 255, 0.22);
+	-webkit-text-stroke: 1px rgba(255, 255, 255, 0.22);
 }
 
 [data-theme='light'] .hero-marquee {
-	-webkit-text-stroke: 1px rgba(18, 21, 27, 0.12);
+	color: rgba(18, 21, 27, 0.22);
+	-webkit-text-stroke: 1px rgba(18, 21, 27, 0.22);
 }

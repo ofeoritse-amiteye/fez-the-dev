@@ -33,9 +33,9 @@
 					<a
 						data-reveal
 						href="/#work"
-						class="focus-ring inline-flex items-center gap-2 rounded-lg font-mono text-[0.78rem] tracking-[0.16em] text-[var(--text-muted)] uppercase hover:text-[var(--text)]"
+						class="focus-ring inline-flex items-center gap-2 rounded-lg font-mono text-[0.78rem] tracking-[0.16em] text-[var(--text-muted)] uppercase bg-white text-black px-2 py-1"
 					>
-						Back to selected builds
+						Go Back
 					</a>
 
 					<p

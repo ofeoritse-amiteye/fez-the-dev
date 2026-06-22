@@ -119,17 +119,9 @@
 					+
 					<kbd
 						class="mx-0.5 inline rounded-md border border-[var(--glass-border)] bg-[var(--surface-2)] px-1.5 py-0.5 font-mono text-[0.72rem] text-[var(--text)]">K</kbd>
-					anywhere to open the navigation palette — jump to sections, projects, and links without using the
+					anywhere to open the navigation palette, jump to sections, projects, and links without using the
 					menu.
 				</p>
-				<button
-					type="button"
-					id="command-palette-hint-open"
-					class="ease-cinematic focus-ring mt-4 w-full rounded-xl border border-[color-mix(in_oklab,var(--accent-a)_36%,transparent)] bg-[color-mix(in_oklab,var(--accent-a)_10%,transparent)] px-4 py-2.5 text-left font-mono text-[0.72rem] tracking-[0.12em] uppercase [transition-duration:calc(260ms*var(--motion))] hover:bg-[color-mix(in_oklab,var(--accent-a)_16%,transparent)]"
-					onclick={() => openCommandPalette()}
-				>
-					Open navigation palette
-				</button>
 			</div>
 		{:else}
 			<button

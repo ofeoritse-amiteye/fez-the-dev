@@ -33,13 +33,14 @@
 </script>
 
 <section
-	class="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden px-4 pt-28 pb-16 sm:px-6 sm:pb-24 lg:pt-0 md:px-10 lg:px-14"
+	class="relative isolate flex min-h-[100svh] flex-col justify-end overflow-hidden px-4 pt-28 pb-16 sm:px-6 sm:pb-24 md:px-10 lg:px-14"
 	aria-labelledby="hero-heading"
 >
 	<div
 		class="pointer-events-none absolute inset-0 -z-40 bg-[radial-gradient(circle_at_top,rgba(118,248,207,0.12),transparent_42%),radial-gradient(circle_at_85%_18%,rgba(255,173,94,0.15),transparent_28%)] {theme.mode === 'light' ? 'opacity-85' : ''}"
 		aria-hidden="true"
 	></div>
+
 	<div
 		class="mesh-aurora pointer-events-none absolute -z-30 {theme.mode === 'light' ? 'opacity-65' : ''}"
 		aria-hidden="true"
@@ -59,17 +60,6 @@
 	</div>
 
 	<div class="relative mx-auto w-full max-w-[88rem]">
-		<div class="-mb-10 hidden overflow-hidden lg:-mb-8 lg:block" aria-hidden="true">
-			<div
-				class="hero-marquee marquee-strip flex gap-16 font-mono text-[clamp(5.5rem,14vw,12rem)] font-semibold tracking-[0.16em] whitespace-nowrap text-transparent opacity-[0.085] lg:text-[clamp(6rem,16vw,14rem)]"
-				style="--marquee-duration: 48s;"
-			>
-				{#each [...heroMarquee, ...heroMarquee] as item}
-					<span class="px-8 uppercase">{item}</span>
-				{/each}
-			</div>
-		</div>
-
 		<MotionReveal>
 			<div class="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.9fr)] lg:items-start lg:gap-10">
 				<div
@@ -119,7 +109,7 @@
 								href="#work"
 								class="ease-cinematic focus-ring inline-flex min-h-[2.65rem] items-center justify-center gap-2 rounded-xl bg-[var(--text)] px-4 py-2 text-xs font-semibold text-[var(--surface-0)] [transition-duration:calc(260ms*var(--motion))] hover:-translate-y-0.5 hover:opacity-[0.94] sm:min-h-[2.85rem] sm:px-5 sm:text-sm lg:min-h-[3rem] lg:px-6"
 							>
-								View my work
+								View my projects
 							</a>
 							<a
 								href={profile.resumeHref}
@@ -132,16 +122,6 @@
 									<line x1="12" x2="12" y1="15" y2="3" />
 								</svg>
 								Download resume
-							</a>
-							<a
-								href={`mailto:${profile.email}?subject=Frontend%20opportunity`}
-								class="ease-cinematic focus-ring inline-flex min-h-[2.65rem] items-center justify-center gap-2 rounded-xl border border-[color-mix(in_oklab,var(--accent-a)_42%,var(--glass-border))] bg-[color-mix(in_oklab,var(--accent-a)_10%,var(--surface-2))] px-4 py-2 text-xs font-semibold text-[var(--text)] [transition-duration:calc(260ms*var(--motion))] hover:-translate-y-0.5 sm:min-h-[2.85rem] sm:px-5 sm:text-sm lg:min-h-[3rem] lg:px-6"
-							>
-								<svg class="h-3.5 w-3.5 shrink-0 opacity-90 sm:h-4 sm:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-									<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-									<polyline points="22,6 12,13 2,6" />
-								</svg>
-								Start a conversation
 							</a>
 						</div>
 
@@ -201,7 +181,7 @@
 										Status
 									</p>
 									<p class="mt-1 text-xs font-medium text-[var(--text)] sm:text-sm">
-										Open for product-focused frontend work
+										Open for frontend and full-stack product work
 									</p>
 								</div>
 								<div

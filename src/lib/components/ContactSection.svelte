@@ -1,6 +1,6 @@
 <script lang="ts">
 	import MotionReveal from '$lib/components/MotionReveal.svelte';
-	import { contactPrompts, profile, socialChipTone, socialLinks } from '$lib/data/portfolio';
+import { contactPrompts, emailHref, profile, socialChipTone, socialLinks } from '$lib/data/portfolio';
 	import SocialIcon from '$lib/components/SocialIcon.svelte';
 	import { isValidEmail, sanitizePlainText } from '$lib/utils/sanitize';
 
@@ -40,7 +40,11 @@
 			)
 		);
 
-		window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+	const composeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+		profile.email
+	)}&su=${subject}&body=${body}`;
+
+	window.location.href = composeUrl;
 		submitted = true;
 	}
 </script>
@@ -103,10 +107,12 @@
 						>
 							Direct
 						</p>
-						<a
-							href={`mailto:${profile.email}`}
-							class="focus-ring mt-4 inline-block rounded text-base font-semibold"
-						>
+					<a
+						href={emailHref}
+						target="_blank"
+						rel="noreferrer noopener"
+						class="focus-ring mt-4 inline-block rounded text-base font-semibold"
+					>
 							{profile.email}
 						</a>
 						<p class="mt-3 text-sm text-[var(--text-muted)]">{profile.phone}</p>
@@ -161,8 +167,8 @@
 				<p
 					class="mt-3 max-w-2xl text-sm leading-relaxed text-[color-mix(in_oklab,var(--text)_76%,transparent)]"
 				>
-					This form uses a mailto handoff, so no keys are exposed in the client. It is simple on
-					purpose and easy to replace with a server action later.
+				This form opens a prefilled email draft in Gmail, so no keys are exposed in the client. It
+				is simple on purpose and easy to replace with a server action later.
 				</p>
 
 				<div class="mt-7 grid gap-4">
@@ -227,12 +233,6 @@
 					>
 						Open email draft
 					</button>
-					<a
-						href={`mailto:${profile.email}`}
-						class="focus-ring inline-flex min-h-[3.35rem] items-center justify-center rounded-xl border border-[var(--glass-border)] px-6 text-sm font-semibold"
-					>
-						Email directly
-					</a>
 				</div>
 			</form>
 		</div>

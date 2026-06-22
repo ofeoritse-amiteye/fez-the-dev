@@ -194,13 +194,6 @@
 					>
 						Open case study
 					</a>
-					<a
-						href={project.liveUrl}
-						{...externalAnchorProps(project.liveUrl)}
-						class="ease-cinematic focus-ring inline-flex items-center justify-center rounded-xl border border-[var(--glass-border)] px-4 py-2.5 text-sm font-semibold [transition-duration:calc(220ms*var(--motion))] hover:-translate-y-0.5"
-					>
-						{project.liveLabel}
-					</a>
 				</div>
 			</div>
 		</div>

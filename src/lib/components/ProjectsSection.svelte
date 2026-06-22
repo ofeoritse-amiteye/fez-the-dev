@@ -43,7 +43,7 @@
 						data-reveal
 						class="font-mono text-[0.72rem] tracking-[0.32em] text-[color-mix(in_oklab,var(--accent-c)_92%,transparent)] uppercase"
 					>
-						Selected builds
+						My projects
 					</p>
 					<h2
 						id="work-heading"
@@ -53,18 +53,10 @@
 						Case studies that show how the engineering actually moves.
 					</h2>
 				</div>
-				<p
-					data-reveal
-					class="max-w-2xl text-[1.02rem] leading-relaxed text-[color-mix(in_oklab,var(--text)_74%,transparent)] xl:justify-self-end"
-				>
-					Instead of tossing every project into the same card shell, this section keeps one active
-					dossier open at all times. Hover or focus a build to shift the preview and inspect the
-					technical shape of the work.
-				</p>
 			</div>
 		</MotionReveal>
 
-		<div class="mt-10 flex flex-wrap gap-3" role="tablist" aria-label="Filter projects">
+		<div class="mt-10 flex hidden lg:block flex-wrap gap-3" role="tablist" aria-label="Filter projects">
 			{#each projectCategories as category}
 				<button
 					type="button"
@@ -200,13 +192,6 @@
 									class="ease-cinematic focus-ring inline-flex items-center justify-center rounded-xl bg-[var(--text)] px-5 py-2.5 text-sm font-semibold text-[var(--surface-0)] [transition-duration:calc(220ms*var(--motion))] hover:-translate-y-0.5"
 								>
 									Read the full case study
-								</a>
-								<a
-									href={activeProject.liveUrl}
-									{...externalAnchorProps(activeProject.liveUrl)}
-									class="ease-cinematic focus-ring inline-flex items-center justify-center rounded-xl border border-[var(--glass-border)] px-5 py-2.5 text-sm font-semibold [transition-duration:calc(220ms*var(--motion))] hover:-translate-y-0.5"
-								>
-									{activeProject.liveLabel}
 								</a>
 								<a
 									href={activeProject.repoUrl}

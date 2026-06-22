@@ -24,7 +24,6 @@ export type Project = {
 	category: ProjectCategory;
 	technologies: string[];
 	liveUrl: string;
-	liveLabel: string;
 	repoUrl: string;
 	repoLabel: string;
 	visual: ProjectVisual;
@@ -48,14 +47,14 @@ export const projectCategories: { id: ProjectCategory | 'all'; label: string }[]
 export const projects: Project[] = [
 	{
 		slug: 'content-creator-marketplace',
-		title: 'Content Creator Marketplace',
+		title: 'TRIM — Content Creator Marketplace',
 		tagline:
-			'A production marketplace for brands, creators, payouts, and live campaign operations.',
+			'A production marketplace for brands, creators, payments, and live campaign operations.',
 		description:
 			'A two-sided platform built around trust-heavy workflows: onboarding, campaign management, deliverables, direct messaging, and wallet infrastructure with Paystack-backed payouts.',
 		year: '2025-present',
-		role: 'Product engineer',
-		timeline: 'Freelance engagement',
+		role: 'Software Engineer (Full-stack)',
+		timeline: 'TrimHQ · Remote',
 		status: 'Production',
 		category: 'product',
 		technologies: [
@@ -64,15 +63,16 @@ export const projects: Project[] = [
 			'MongoDB',
 			'Prisma',
 			'Paystack',
+			'Cloudflare R2',
 			'Pusher',
 			'PostHog',
 			'Sentry',
 			'Tailwind CSS v4'
 		],
-		liveUrl: 'mailto:ofeoritseamiteye03@gmail.com?subject=Marketplace%20walkthrough%20request',
-		liveLabel: 'Request walkthrough',
-		repoUrl: 'https://github.com/hngprojects/flowbrand-ui',
-		repoLabel: 'Frontend repository',
+		liveUrl:
+			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Marketplace%20walkthrough%20request',
+		repoUrl: 'https://github.com/ofeoritse-amiteye',
+		repoLabel: 'GitHub profile',
 		visual: {
 			from: '#07151b',
 			to: '#1c533f',
@@ -86,7 +86,7 @@ export const projects: Project[] = [
 			'I shipped a layered system for campaign execution, wallet movement, and real-time collaboration so brands and creators could move from discovery to payout in one product surface.',
 		impact: [
 			'Implemented deposits, withdrawals, payout requests, fee tiers, and settlement-safe reconciliation with Paystack.',
-			'Delivered real-time messaging and campaign state updates with low-latency event infrastructure.',
+			'Delivered real-time messaging and campaign state updates with Pusher Channels.',
 			'Instrumented the product with PostHog and Sentry so rollout quality and user behavior stayed measurable.'
 		],
 		systems: [
@@ -97,7 +97,7 @@ export const projects: Project[] = [
 		buildNotes: [
 			'Used Prisma to keep operational data predictable while the product surface stayed highly dynamic.',
 			'Designed rate-limited auth, hashed withdrawal PINs, and OTP checks around financial routes.',
-			'Wired analytics, monitoring, and notifications into the product from the start instead of bolting them on.'
+			'Migrated file storage from GridFS to Cloudflare R2 with presigned uploads and tighter delivery.'
 		],
 		metrics: [
 			{ label: 'Surface', value: 'Two-sided marketplace' },
@@ -127,8 +127,8 @@ export const projects: Project[] = [
 			'Zustand',
 			'Axios'
 		],
-		liveUrl: 'mailto:ofeoritseamiteye03@gmail.com?subject=Whisper%20demo%20request',
-		liveLabel: 'Request secure demo',
+		liveUrl:
+			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Whisper%20demo%20request',
 		repoUrl: 'https://github.com/ofeoritse-amiteye',
 		repoLabel: 'GitHub profile',
 		visual: {
@@ -184,8 +184,8 @@ export const projects: Project[] = [
 			'Fetch API',
 			'chrome.storage'
 		],
-		liveUrl: 'mailto:ofeoritseamiteye03@gmail.com?subject=Glance%20demo%20request',
-		liveLabel: 'Request extension demo',
+		liveUrl:
+			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Glance%20demo%20request',
 		repoUrl: 'https://github.com/ofeoritse-amiteye',
 		repoLabel: 'GitHub profile',
 		visual: {
@@ -233,8 +233,8 @@ export const projects: Project[] = [
 		status: 'Released',
 		category: 'product',
 		technologies: ['React', 'Node.js', 'Firebase', 'Realtime data sync'],
-		liveUrl: 'mailto:ofeoritseamiteye03@gmail.com?subject=Fantasy%20sports%20demo%20request',
-		liveLabel: 'Request product demo',
+		liveUrl:
+			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Fantasy%20sports%20demo%20request',
 		repoUrl: 'https://github.com/ofeoritse-amiteye',
 		repoLabel: 'GitHub profile',
 		visual: {
@@ -282,8 +282,8 @@ export const projects: Project[] = [
 		status: 'Released',
 		category: 'mobile',
 		technologies: ['React Native', 'Expo', 'Firebase', 'Offline sync'],
-		liveUrl: 'mailto:ofeoritseamiteye03@gmail.com?subject=Student%20assistant%20demo%20request',
-		liveLabel: 'Request app walkthrough',
+		liveUrl:
+			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Student%20assistant%20demo%20request',
 		repoUrl: 'https://github.com/ofeoritse-amiteye',
 		repoLabel: 'GitHub profile',
 		visual: {

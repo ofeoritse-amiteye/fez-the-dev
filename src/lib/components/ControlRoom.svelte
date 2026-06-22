@@ -29,9 +29,9 @@
 </script>
 
 <section
-	id="control"
+	id="focus"
 	class="relative scroll-mt-28 px-4 py-28 sm:px-6 md:px-10 lg:px-14"
-	aria-labelledby="control-heading"
+	aria-labelledby="focus-heading"
 >
 	<div
 		class="pointer-events-none absolute inset-x-0 top-[12%] -z-[1] h-[30rem] bg-[radial-gradient(circle_at_top,rgba(118,248,207,0.12),transparent_58%)]"
@@ -43,10 +43,10 @@
 			<div class="flex max-w-[72rem] flex-col gap-6 sm:gap-7">
 				<div>
 					<p data-reveal class={kickerClass}>
-						Control room
+						Focus lanes
 					</p>
 					<h2
-						id="control-heading"
+						id="focus-heading"
 						data-reveal
 						class="mt-4 max-w-[22ch] font-display text-[clamp(2.25rem,6vw,4.25rem)] leading-[1.02] font-semibold tracking-[-0.045em] xl:max-w-[26ch] xl:text-[clamp(2.75rem,4.2vw,4.75rem)]"
 					>
