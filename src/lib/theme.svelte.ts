@@ -3,12 +3,13 @@ export type ThemeMode = 'light' | 'dark';
 const STORAGE_KEY = 'portfolio-theme';
 
 function readStored(): ThemeMode {
-	if (typeof localStorage === 'undefined') return 'dark';
+	if (typeof localStorage === 'undefined') return 'light';
 	const v = localStorage.getItem(STORAGE_KEY);
-	return v === 'light' || v === 'dark' ? v : 'dark';
+	/* Neo-brutal portfolio defaults to cream/light */
+	return v === 'light' || v === 'dark' ? v : 'light';
 }
 
-export const theme = $state<{ mode: ThemeMode }>({ mode: 'dark' });
+export const theme = $state<{ mode: ThemeMode }>({ mode: 'light' });
 
 export function syncThemeFromStorage(): void {
 	const m = readStored();

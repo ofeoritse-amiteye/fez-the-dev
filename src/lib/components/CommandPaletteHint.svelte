@@ -4,7 +4,7 @@
 	import { fade } from 'svelte/transition';
 	import { openCommandPalette } from '$lib/commandPalette.svelte';
 
-	/** Shown in kbd chips — ⌘ on Apple platforms, Ctrl elsewhere */
+	/** Shown in kbd chips ⌘ on Apple platforms, Ctrl elsewhere */
 	let modLabel = $state('Ctrl');
 
 	let expanded = $state(true);

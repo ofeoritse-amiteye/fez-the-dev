@@ -1,39 +1,11 @@
 <script lang="ts">
-	import { emailHref, profile } from '$lib/data/portfolio';
+	import { profile } from '$lib/data/portfolio';
 </script>
 
-<footer class="border-t border-[var(--glass-border)] px-4 py-12 sm:px-6 md:px-10 lg:px-14">
-	<div
-		class="mx-auto flex max-w-[88rem] flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
-	>
-		<div>
-			<p class="font-display text-xl font-semibold tracking-[-0.03em]">{profile.name}</p>
-		</div>
-
-		<div class="flex flex-wrap gap-3">
-			<a
-				href={profile.githubUrl}
-				target="_blank"
-				rel="noreferrer noopener"
-				class="focus-ring rounded-full border border-[var(--glass-border)] px-4 py-2 font-mono text-[0.72rem] tracking-[0.14em] uppercase"
-			>
-				GitHub
-			</a>
-			<a
-				href={emailHref}
-				target="_blank"
-				rel="noreferrer noopener"
-				class="focus-ring rounded-full border border-[var(--glass-border)] px-4 py-2 font-mono text-[0.72rem] tracking-[0.14em] uppercase"
-			>
-				Email
-			</a>
-			<a
-				href={profile.resumeHref}
-				class="focus-ring rounded-full border border-[var(--glass-border)] px-4 py-2 font-mono text-[0.72rem] tracking-[0.14em] uppercase"
-				download
-			>
-				Resume
-			</a>
-		</div>
+<footer class="border-t-[2.5px] border-[var(--ink)] bg-[var(--paper)] py-8">
+	<div class="section-wrap">
+		<p class="text-sm font-semibold text-[color-mix(in_srgb,var(--ink)_70%,transparent)]">
+			© {new Date().getFullYear()} {profile.name}
+		</p>
 	</div>
 </footer>

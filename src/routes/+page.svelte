@@ -1,6 +1,6 @@
 <script lang="ts">
+	import AboutSection from '$lib/components/AboutSection.svelte';
 	import ContactSection from '$lib/components/ContactSection.svelte';
-	import ControlRoom from '$lib/components/ControlRoom.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import ProjectsSection from '$lib/components/ProjectsSection.svelte';
 	import SiteFooter from '$lib/components/SiteFooter.svelte';
@@ -8,18 +8,16 @@
 </script>
 
 <svelte:head>
-	<title>Amiteye Favour Ofeoritse | Frontend Developer and Full-Stack Engineer</title>
+	<title>Amiteye Favour Ofeoritse | Frontend & Full-Stack Engineer</title>
 	<meta
 		name="description"
-		content="Interactive SvelteKit portfolio for Ofeoritse: realtime products, secure systems, AI tooling, cinematic motion, and production-grade frontend engineering."
+		content="Portfolio of Ofeoritse, product-focused frontend and full-stack engineering across marketplaces, realtime systems, and fintech flows."
 	/>
 </svelte:head>
 
-<main id="main">
-	<Hero />
-	<ControlRoom />
-	<ProjectsSection />
-	<SkillsSection />
-	<ContactSection />
-	<SiteFooter />
-</main>
+<Hero />
+<AboutSection />
+<ProjectsSection />
+<SkillsSection />
+<ContactSection />
+<SiteFooter />

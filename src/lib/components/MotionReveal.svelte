@@ -31,18 +31,18 @@
 
 		for (const node of kids) {
 			node.style.opacity = '0';
-			node.style.transform = 'translateY(22px)';
+			node.style.transform = 'translateY(14px)';
 		}
 
-		const sec = motionDuration(540) / 1000;
+		const sec = motionDuration(320) / 1000;
 		kids.forEach((node, i) => {
 			animate(
 				node,
-				{ opacity: [0, 1], transform: ['translateY(22px)', 'translateY(0px)'] },
+				{ opacity: [0, 1], transform: ['translateY(14px)', 'translateY(0px)'] },
 				{
 					duration: sec,
-					delay: i * 0.068,
-					ease: [0.18, 1, 0.32, 1]
+					delay: i * 0.045,
+					ease: [0.34, 1.3, 0.64, 1]
 				}
 			);
 		});

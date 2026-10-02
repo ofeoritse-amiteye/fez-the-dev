@@ -101,10 +101,12 @@ import { emailHref, profile } from '$lib/data/portfolio';
 	function projectCommands(): Command[] {
 		return projects.map((project) => ({
 			id: `project-${project.slug}`,
-			label: `Open case study: ${project.title}`,
+			label: `Visit project: ${project.title}`,
 			hint: 'Project',
 			keywords: `${project.category} ${project.technologies.join(' ')}`.toLowerCase(),
-			run: () => goto(`/projects/${project.slug}`)
+			run: () => {
+				window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+			}
 		}));
 	}
 

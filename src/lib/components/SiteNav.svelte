@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { openCommandPalette } from '$lib/commandPalette.svelte';
+	import { slide, fade } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 	import { profile } from '$lib/data/portfolio';
-	import { theme, toggleTheme } from '$lib/theme.svelte';
 
 	const links = [
-		{ href: '/#focus', label: 'Focus' },
-		{ href: '/#work', label: 'My projects' },
-		{ href: '/#skills', label: 'Stack' },
+		{ href: '/#about', label: 'About' },
+		{ href: '/#work', label: 'Work' },
+		{ href: '/#skills', label: 'Skills' },
 		{ href: '/#contact', label: 'Contact' }
 	];
 
@@ -18,137 +18,95 @@
 		if (href.startsWith('/#')) {
 			return page.url.pathname === '/' && page.url.hash === href.slice(1);
 		}
-
 		return page.url.pathname.startsWith(href);
+	}
+
+	function close() {
+		open = false;
 	}
 </script>
 
-<header class="fixed inset-x-0 top-0 z-[60] px-4 pt-4 sm:px-6 lg:px-10 pb-2 ">
-	<div
-		class="mx-auto flex max-w-[88rem] items-center justify-between gap-3 rounded-[1.5rem] border border-[var(--glass-border)] bg-[var(--surface-1)] px-4 py-3 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] sm:px-6 sm:py-3.5"
-	>
-		<a href="/" class="focus-ring rounded-[1rem] px-3 py-2">
-			<p class="font-display text-base font-semibold tracking-[-0.03em]">{profile.shortName}</p>
-			<p class="font-mono text-[0.62rem] tracking-[0.22em] text-[var(--text-muted)] uppercase hidden lg:block">
-				Frontend-focused, full-stack capable
-			</p>
+<header class="nav-shell sticky top-0 z-50">
+	<div class="section-wrap relative z-20 flex min-h-14 items-center justify-between gap-4 py-3">
+		<a
+			href="/"
+			class="focus-ring font-display inline-flex items-center rounded-full border-[2.5px] border-[var(--ink)] bg-[var(--sun)] px-3 py-1.5 text-base font-extrabold tracking-wide uppercase shadow-[2px_2px_0_var(--ink)]"
+		>
+			{profile.shortName}
 		</a>
 
-		<div class="hidden items-center gap-1 lg:flex">
+		<nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
 			{#each links as link}
 				<a
 					href={link.href}
-					class="ease-cinematic focus-ring rounded-full px-4 py-2 font-mono text-[0.72rem] tracking-[0.16em] text-[var(--text-muted)] uppercase [transition-duration:calc(260ms*var(--motion))] hover:bg-[color-mix(in_oklab,var(--accent-a)_8%,transparent)] hover:text-[var(--text)]"
+					class="nav-link focus-ring relative min-h-11 px-3.5 py-2 text-xs font-extrabold tracking-widest uppercase text-[color-mix(in_srgb,var(--ink)_70%,transparent)] transition-colors duration-200 hover:text-[var(--ink)] {isActive(
+						link.href
+					)
+						? 'is-active text-[var(--ink)]'
+						: ''}"
 					aria-current={isActive(link.href) ? 'page' : undefined}
 				>
 					{link.label}
 				</a>
 			{/each}
-
-			<a
-				href={profile.resumeHref}
-				class="ease-cinematic focus-ring inline-flex items-center gap-2 rounded-full bg-[var(--text)] px-4 py-2.5 font-mono text-[0.72rem] font-medium tracking-[0.08em] text-[var(--surface-0)] [transition-duration:calc(260ms*var(--motion))] hover:opacity-[0.92]"
-				download
-			>
-				<svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-					<polyline points="7 10 12 15 17 10" />
-					<line x1="12" x2="12" y1="15" y2="3" />
-				</svg>
-				Download resume
-			</a>
-
-			<button
-				type="button"
-				class="ease-cinematic focus-ring flex h-11 w-11 shrink-0 items-center justify-center rounded-full border text-white [transition-duration:calc(260ms*var(--motion))] {theme.mode === 'dark'
-					? 'border-[#a86416] bg-[#c87620] hover:bg-[#b86a18]'
-					: 'border-[#2f3d6e] bg-[#3f4f8a] hover:bg-[#364578]'}"
-				onclick={() => toggleTheme()}
-				aria-label={theme.mode === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-			>
-				{#if theme.mode === 'dark'}
-					<svg class="h-[1.2rem] w-[1.2rem] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-						<circle cx="12" cy="12" r="4" />
-						<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-					</svg>
-				{:else}
-					<svg class="h-[1.2rem] w-[1.2rem] text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-					</svg>
-				{/if}
-			</button>
-		</div>
+		</nav>
 
 		<button
 			type="button"
-			class="focus-ring rounded-xl px-4 py-2 font-mono text-[0.72rem] tracking-[0.16em] uppercase [transition-duration:calc(220ms*var(--motion))] lg:hidden {theme.mode === 'dark'
-				? 'border border-neutral-200 bg-white text-black hover:bg-neutral-100'
-				: 'border border-neutral-900 bg-black text-white hover:bg-neutral-800'}"
+			class="focus-ring inline-flex size-11 items-center justify-center rounded-full border-[2.5px] border-[var(--ink)] bg-[var(--paper)] shadow-[2px_2px_0_var(--ink)] md:hidden"
 			aria-controls={navId}
 			aria-expanded={open}
+			aria-label={open ? 'Close menu' : 'Open menu'}
 			onclick={() => (open = !open)}
 		>
-			Menu
+			{#if open}
+				<svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path
+						d="M6 6l12 12M18 6L6 18"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+					/>
+				</svg>
+			{:else}
+				<svg class="size-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path
+						d="M4 7h16M4 12h16M4 17h16"
+						stroke="currentColor"
+						stroke-width="2.5"
+						stroke-linecap="round"
+					/>
+				</svg>
+			{/if}
 		</button>
 	</div>
 
 	{#if open}
-		<div
-			id={navId}
-			class="mx-auto mt-4 max-w-[88rem] rounded-[1.5rem] border border-[var(--glass-border)] bg-[var(--surface-1)] p-4 shadow-[0_12px_40px_-24px_rgba(0,0,0,0.45)] lg:hidden"
-			role="navigation"
-			aria-label="Mobile navigation"
-		>
-			<div class="flex flex-col gap-2">
+		<button
+			type="button"
+			class="fixed inset-0 z-10 cursor-default border-0 bg-[color-mix(in_srgb,var(--ink)_40%,transparent)] p-0 md:hidden"
+			transition:fade={{ duration: 280 }}
+			aria-label="Close menu"
+			onclick={close}
+		></button>
 
-			<button
-					type="button"
-					class="ease-cinematic absolute right-6 md:right-10 focus-ring mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full border text-white [transition-duration:calc(260ms*var(--motion))] {theme.mode === 'dark'
-						? 'border-[#a86416] bg-[#c87620] hover:bg-[#b86a18]'
-						: 'border-[#2f3d6e] bg-[#3f4f8a] hover:bg-[#364578]'}"
-					onclick={() => {
-						toggleTheme();
-						open = false;
-					}}
-					aria-label={theme.mode === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-				>
-					{#if theme.mode === 'dark'}
-						<svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-							<circle cx="12" cy="12" r="4" />
-							<path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-						</svg>
-					{:else}
-						<svg class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-							<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-						</svg>
-					{/if}
-				</button>
+		<nav
+			id={navId}
+			class="relative z-20 border-t border-[color-mix(in_srgb,var(--ink)_18%,transparent)] bg-[var(--paper)] md:hidden"
+			aria-label="Mobile"
+			transition:slide={{ duration: 340, easing: cubicOut, axis: 'y' }}
+		>
+			<div class="section-wrap flex flex-col gap-2 py-4">
 				{#each links as link}
 					<a
 						href={link.href}
-						class="focus-ring rounded-xl px-4 py-3 font-mono text-[0.8rem] tracking-[0.12em] uppercase hover:bg-[var(--surface-2)]"
-						onclick={() => (open = false)}
+						class="focus-ring min-h-11 rounded-xl border border-[var(--ink)] bg-[var(--cream)] px-4 py-3 text-sm font-extrabold tracking-widest uppercase"
+						onclick={close}
 					>
 						{link.label}
 					</a>
 				{/each}
-
-				<a
-					href={profile.resumeHref}
-					class="ease-cinematic focus-ring inline-flex w-full items-center justify-center gap-2.5 rounded-xl bg-[var(--text)] px-4 py-3.5 font-mono text-[0.78rem] font-medium tracking-[0.06em] text-[var(--surface-0)] [transition-duration:calc(260ms*var(--motion))] hover:opacity-[0.92]"
-					download
-					onclick={() => (open = false)}
-				>
-					<svg class="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-						<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-						<polyline points="7 10 12 15 17 10" />
-						<line x1="12" x2="12" y1="15" y2="3" />
-					</svg>
-					Download resume
-				</a>
-
-
 			</div>
-		</div>
+		</nav>
 	{/if}
 </header>

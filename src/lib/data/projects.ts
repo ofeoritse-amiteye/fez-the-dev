@@ -24,9 +24,11 @@ export type Project = {
 	category: ProjectCategory;
 	technologies: string[];
 	liveUrl: string;
+	liveLabel: string;
 	repoUrl: string;
 	repoLabel: string;
 	visual: ProjectVisual;
+	coverImage?: string;
 	accentNote: string;
 	challenge: string;
 	outcome: string;
@@ -47,14 +49,14 @@ export const projectCategories: { id: ProjectCategory | 'all'; label: string }[]
 export const projects: Project[] = [
 	{
 		slug: 'content-creator-marketplace',
-		title: 'TRIM — Content Creator Marketplace',
+		title: 'TRIM, Content Creator Marketplace',
 		tagline:
 			'A production marketplace for brands, creators, payments, and live campaign operations.',
 		description:
 			'A two-sided platform built around trust-heavy workflows: onboarding, campaign management, deliverables, direct messaging, and wallet infrastructure with Paystack-backed payouts.',
 		year: '2025-present',
-		role: 'Software Engineer (Full-stack)',
-		timeline: 'TrimHQ · Remote',
+		role: 'Fullstack Software Engineer (Part-time)',
+		timeline: 'TrimHQ · Remote · trim-hq.com',
 		status: 'Production',
 		category: 'product',
 		technologies: [
@@ -67,12 +69,15 @@ export const projects: Project[] = [
 			'Pusher',
 			'PostHog',
 			'Sentry',
-			'Tailwind CSS v4'
+			'Tailwind CSS v4',
+			'Radix UI',
+			'Zustand'
 		],
-		liveUrl:
-			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Marketplace%20walkthrough%20request',
+		liveUrl: 'https://trim-hq.com',
+		liveLabel: 'Visit project',
 		repoUrl: 'https://github.com/ofeoritse-amiteye',
 		repoLabel: 'GitHub profile',
+		coverImage: '/trim.png',
 		visual: {
 			from: '#07151b',
 			to: '#1c533f',
@@ -83,26 +88,146 @@ export const projects: Project[] = [
 		challenge:
 			'Creator marketplaces collapse when trust, money movement, and communication feel inconsistent. This build had to coordinate all three without losing velocity.',
 		outcome:
-			'I shipped a layered system for campaign execution, wallet movement, and real-time collaboration so brands and creators could move from discovery to payout in one product surface.',
+			'I shipped a layered system for campaign execution, wallet movement, KYC/KYB, and real-time collaboration so brands and creators could move from discovery to payout in one product surface.',
 		impact: [
-			'Implemented deposits, withdrawals, payout requests, fee tiers, and settlement-safe reconciliation with Paystack.',
-			'Delivered real-time messaging and campaign state updates with Pusher Channels.',
-			'Instrumented the product with PostHog and Sentry so rollout quality and user behavior stayed measurable.'
+			'Paystack wallet deposits, withdrawals, webhook reconciliation, PIN security, and spend caps for unverified brands.',
+			'Prembly KYC/KYB (BVN, ID, CAC) with verification-gated brand onboarding.',
+			'Pusher Channels for messaging, wallet updates, and live campaign state, plus PostHog and Sentry in production.'
 		],
 		systems: [
-			'Dual role experiences for brands and creators with role-aware onboarding and task states.',
-			'Wallet architecture with lock-before-transfer logic, rollback handling, and webhook verification.',
-			'Cloudflare-backed delivery plus Pusher events for scalable communication and live state.'
+			'Dual role Brand/Creator experiences with 20+ MongoDB models across 500+ TypeScript/React files.',
+			'Wallet architecture with lock-before-transfer, compensating rollback, and Nigeria-aligned fee tiers.',
+			'Cloudflare R2 storage migration, JWT/OTP/OAuth auth, Upstash Redis rate limiting, and PWA caching.'
 		],
 		buildNotes: [
-			'Used Prisma to keep operational data predictable while the product surface stayed highly dynamic.',
-			'Designed rate-limited auth, hashed withdrawal PINs, and OTP checks around financial routes.',
-			'Migrated file storage from GridFS to Cloudflare R2 with presigned uploads and tighter delivery.'
+			'Replaced SSE with Pusher private channels for scalable live updates without custom WebSocket servers.',
+			'Security-hardened financial routes: jose JWT sessions, bcrypt, hashed withdrawal PINs, OTP, rate limits.',
+			'Web Push, Nodemailer, Meta/TikTok/X OAuth-style flows, and cron endpoints for campaign automation.'
 		],
 		metrics: [
 			{ label: 'Surface', value: 'Two-sided marketplace' },
-			{ label: 'Trust layer', value: 'Wallet and payout flows' },
-			{ label: 'Realtime', value: 'Live messaging and updates' }
+			{ label: 'Trust layer', value: 'Wallet + KYC/KYB' },
+			{ label: 'Realtime', value: 'Pusher Channels' }
+		]
+	},
+	{
+		slug: 'laundrolink',
+		title: 'LaundroLink',
+		tagline:
+			'Mobile marketplace connecting customers, laundry partners, and riders for on-demand laundry pickup and delivery.',
+		description:
+			'A production-ready Expo (React Native) app for a multi-sided laundry marketplace: role-based auth (customer, rider, partner), email verification, onboarding, secure session restore with token refresh, GPS-based address selection, and a home experience for discovering nearby laundry partners.',
+		year: '2026',
+		role: 'Mobile Frontend Developer',
+		timeline: 'Independent / product build',
+		status: 'Production-ready',
+		category: 'mobile',
+		technologies: [
+			'Expo',
+			'React Native',
+			'Expo Router',
+			'TypeScript',
+			'NativeWind',
+			'Zustand',
+			'TanStack Query',
+			'Zod',
+			'Axios',
+			'SecureStore'
+		],
+		liveUrl: 'https://laundrolinkapp.com',
+		liveLabel: 'Visit project',
+		repoUrl: 'https://github.com/ofeoritse-amiteye',
+		repoLabel: 'GitHub profile',
+		coverImage: '/laundro-pic.png',
+		visual: {
+			from: '#0c1f2e',
+			to: '#17909f',
+			surface: 'Role-based auth, GPS address flows, and partner discovery',
+			glow: '#7ed3de'
+		},
+		accentNote:
+			'Multi-sided mobile products live or die on auth clarity, session restore, and location UX, not just screens.',
+		challenge:
+			'Laundry pickup and delivery needs three roles in one app without confusing onboarding, insecure sessions, or brittle location flows.',
+		outcome:
+			'I shipped LaundroLink as an Expo/React Native marketplace for laundry pickup and delivery across customers, partners, and riders, with type-safe API access and durable session handling.',
+		impact: [
+			'Shipped role-based auth, email verification, and onboarding for customer, rider, and partner flows.',
+			'Implemented secure session restore with token refresh via SecureStore.',
+			'Built GPS-based address selection and a home experience for discovering nearby laundry partners.'
+		],
+		systems: [
+			'Expo Router file-based navigation across multi-role app surfaces.',
+			'Type-safe API client with Axios, Zod validation, TanStack Query, and Zustand state.',
+			'NativeWind UI with shared feature-based mobile architecture.'
+		],
+		buildNotes: [
+			'Kept auth and token refresh as first-class infrastructure, not an afterthought.',
+			'Location and partner discovery were designed for real on-demand pickup flows.',
+			'Stack stayed mobile-native: Expo Router, TypeScript, NativeWind, SecureStore.'
+		],
+		metrics: [
+			{ label: 'Platform', value: 'Expo / React Native' },
+			{ label: 'Roles', value: 'Customer · Rider · Partner' },
+			{ label: 'Core', value: 'Auth + location + discovery' }
+		]
+	},
+	{
+		slug: 'visual-query-builder',
+		title: 'Visual Query Builder',
+		tagline:
+			'Schema-driven query builder with nested condition groups and multi-target SQL / MongoDB / GraphQL previews.',
+		description:
+			'A recursive visual query builder with normalized immutable tree state, drag-and-drop reordering, multi-target query generation, and a local execution engine against schema-owned mock data.',
+		year: '2026',
+		role: 'Frontend engineer',
+		timeline: 'Independent build',
+		status: 'Shipped',
+		category: 'product',
+		technologies: [
+			'Next.js',
+			'TypeScript',
+			'Zustand',
+			'TanStack Query',
+			'Tailwind CSS',
+			'dnd-kit',
+			'Vitest'
+		],
+		liveUrl: 'https://visual-query-builder-fez.vercel.app/',
+		liveLabel: 'Visit project',
+		repoUrl: 'https://github.com/ofeoritse-amiteye',
+		repoLabel: 'GitHub profile',
+		coverImage: '/VQB.png',
+		visual: {
+			from: '#1a1028',
+			to: '#4a3570',
+			surface: 'Nested rule trees, SQL preview, and drag-and-drop groups',
+			glow: '#c4a8ff'
+		},
+		accentNote: 'Unlimited nesting without flattening the UI, state stayed normalized and memoised.',
+		challenge:
+			'Deeply nested condition groups usually force tradeoffs between DnD correctness, preview accuracy, and render performance. This build needed all three.',
+		outcome:
+			'I shipped a builder with recursive groups, side-effect-free multi-target generation, scoped drag-and-drop, and an execution engine with sanitisation before tree entry.',
+		impact: [
+			'Recursive condition groups with normalized immutable tree state and unlimited nesting depth.',
+			'Separate SQL, MongoDB, and GraphQL preview traversals, decoupled from state for independent testing.',
+			'Saved presets, execution history, JSON import/export, themes, and keyboard shortcuts.'
+		],
+		systems: [
+			'dnd-kit SortableContext scoped per group for predictable nested reordering.',
+			'Query execution against mock datasets with AND/OR group logic, SQL escaping, and regex validation.',
+			'Render optimization via stable node IDs, memoised recursion, and paginated results.'
+		],
+		buildNotes: [
+			'Vitest coverage on generation and tree updates kept multi-target outputs reliable.',
+			'UI stayed collapsible and keyboard-friendly so power users could move fast.',
+			'Normalized updates avoided full-tree rerenders as nesting depth grew.'
+		],
+		metrics: [
+			{ label: 'Targets', value: 'SQL · Mongo · GraphQL' },
+			{ label: 'UX', value: 'Nested DnD groups' },
+			{ label: 'Quality', value: 'Vitest + memoization' }
 		]
 	},
 	{
@@ -127,10 +252,11 @@ export const projects: Project[] = [
 			'Zustand',
 			'Axios'
 		],
-		liveUrl:
-			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Whisper%20demo%20request',
+		liveUrl: 'https://github.com/ofeoritse-amiteye',
+		liveLabel: 'Visit project',
 		repoUrl: 'https://github.com/ofeoritse-amiteye',
 		repoLabel: 'GitHub profile',
+		coverImage: '/whisper.png',
 		visual: {
 			from: '#0b1021',
 			to: '#30408d',
@@ -184,10 +310,11 @@ export const projects: Project[] = [
 			'Fetch API',
 			'chrome.storage'
 		],
-		liveUrl:
-			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Glance%20demo%20request',
-		repoUrl: 'https://github.com/ofeoritse-amiteye',
-		repoLabel: 'GitHub profile',
+		liveUrl: 'https://github.com/ofeoritse-amiteye/Glance',
+		liveLabel: 'Visit project',
+		repoUrl: 'https://github.com/ofeoritse-amiteye/Glance',
+		repoLabel: 'GitHub repo',
+		coverImage: '/glance.png',
 		visual: {
 			from: '#180f07',
 			to: '#815421',
@@ -227,16 +354,17 @@ export const projects: Project[] = [
 		tagline: 'Real-time scoring, lineup management, and leaderboards for competitive play.',
 		description:
 			'A multiplayer sports product focused on live scoring, head-to-head matchmaking, ranking systems, and regional competition structures.',
-		year: '2024-2025',
+		year: '2023-2025',
 		role: 'Full-stack engineer',
 		timeline: 'Freelance build',
 		status: 'Released',
 		category: 'product',
 		technologies: ['React', 'Node.js', 'Firebase', 'Realtime data sync'],
-		liveUrl:
-			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Fantasy%20sports%20demo%20request',
+		liveUrl: 'https://github.com/ofeoritse-amiteye',
+		liveLabel: 'Visit project',
 		repoUrl: 'https://github.com/ofeoritse-amiteye',
 		repoLabel: 'GitHub profile',
+		coverImage: '/fantasy-sports.png',
 		visual: {
 			from: '#08161a',
 			to: '#26635f',
@@ -282,10 +410,11 @@ export const projects: Project[] = [
 		status: 'Released',
 		category: 'mobile',
 		technologies: ['React Native', 'Expo', 'Firebase', 'Offline sync'],
-		liveUrl:
-			'https://mail.google.com/mail/?view=cm&fs=1&to=ofeoritseamiteye03@gmail.com&su=Student%20assistant%20demo%20request',
-		repoUrl: 'https://github.com/ofeoritse-amiteye',
-		repoLabel: 'GitHub profile',
+		liveUrl: 'https://github.com/ofeoritse-amiteye/Icampus-Reactnative',
+		liveLabel: 'Visit project',
+		repoUrl: 'https://github.com/ofeoritse-amiteye/Icampus-Reactnative',
+		repoLabel: 'GitHub repo',
+		coverImage: '/student-assistant.png',
 		visual: {
 			from: '#101116',
 			to: '#684b2b',
@@ -320,16 +449,6 @@ export const projects: Project[] = [
 		]
 	}
 ];
-
-export function getProjectBySlug(slug: string): Project | undefined {
-	return projects.find((project) => project.slug === slug);
-}
-
-export function getNextProject(slug: string): Project | undefined {
-	const index = projects.findIndex((project) => project.slug === slug);
-	if (index < 0) return undefined;
-	return projects[(index + 1) % projects.length];
-}
 
 export function categoryLabel(id: ProjectCategory): string {
 	const match = projectCategories.find((category) => category.id === id);

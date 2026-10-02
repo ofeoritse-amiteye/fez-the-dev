@@ -41,7 +41,7 @@ export const profile = {
 	name: 'Amiteye Favour Ofeoritse',
 	shortName: 'Ofeoritse',
 	heroLabel: 'Frontend Developer · Full-Stack Engineer',
-	eyebrow: 'Realtime products, AI tooling, and payment-ready interfaces',
+	eyebrow: 'Product UI, realtime systems, and payment flows',
 	location: 'Lagos, Nigeria',
 	email: 'ofeoritseamiteye03@gmail.com',
 	phone: '+234 912 207 2401',
@@ -51,12 +51,13 @@ export const profile = {
 	linkedinUrl: 'https://www.linkedin.com/in/ofeoritse-amiteye-760527263',
 	linkedinHandle: 'linkedin.com/in/ofeoritse-amiteye-760527263',
 	whatsAppUrl: 'https://wa.me/2349122072401',
-	resumeHref: '/AMITEYE_OFEORITSE_RESUME(JUNE).pdf',
+	website: 'https://trim-hq.com',
+	resumeHref: '/AMITEYE_OFEORITSE_RESUME_2026_O.pdf',
 	profileImage: '/ofeoritse-profile.jpg',
 	intro:
-		'Frontend-focused full-stack engineer with 4+ years building production web and mobile apps across AI tools, secure realtime systems, and fintech platforms with live payment flows.',
+		'Frontend-focused full-stack engineer with 4+ years shipping production web and mobile apps, AI tools, realtime systems, and fintech with live payments. I own features end-to-end, from system design to deployment.',
 	summary:
-		'Strong in React, Next.js, TypeScript, and Node.js with hands-on experience in SSE/WebSockets, secure authentication, Paystack integrations, and end-to-end product delivery.',
+		'Strong in React, Next.js, TypeScript, and Node.js. I design scalable architectures with SSE/WebSockets, secure auth, and payment integrations, owning features from system design to deployment.',
 	availability:
 		'Open to frontend and product engineering roles, plus selective full-stack freelance builds.'
 };
@@ -69,7 +70,6 @@ export const socialLinks: SocialLink[] = [
 	{ label: 'GitHub', href: profile.githubUrl, external: true, platform: 'github' },
 	{ label: 'LinkedIn', href: profile.linkedinUrl, external: true, platform: 'linkedin' },
 	{ label: 'Email', href: emailHref, external: true, platform: 'email' },
-	{ label: 'Call', href: profile.phoneHref, platform: 'phone' },
 	{ label: 'WhatsApp', href: profile.whatsAppUrl, external: true, platform: 'whatsapp' }
 ];
 
@@ -213,11 +213,12 @@ export const focusTracks: FocusTrack[] = [
 
 export const skillGroups: SkillGroup[] = [
 	{
-		title: 'Frontend systems',
+		title: 'Frontend',
 		items: [
 			'React 18',
-			'Next.js 16',
+			'Next.js 16 (App Router)',
 			'React Native (Expo)',
+			'Expo Router',
 			'TypeScript',
 			'JavaScript (ES6+)',
 			'Tailwind CSS v4',
@@ -227,95 +228,157 @@ export const skillGroups: SkillGroup[] = [
 		]
 	},
 	{
-		title: 'Backend and realtime',
+		title: 'Backend & realtime',
 		items: [
 			'Node.js',
 			'Django (Python)',
 			'REST APIs',
-			'WebSockets',
 			'Server-Sent Events',
+			'WebSockets',
 			'Prisma ORM',
 			'Axios',
 			'Nodemailer'
 		]
 	},
 	{
-		title: 'Data, auth, and product state',
+		title: 'Databases & state',
 		items: [
 			'MongoDB',
 			'Firebase (Firestore & Auth)',
 			'MySQL',
 			'IndexedDB',
-			'TanStack Query v5',
 			'Zustand',
+			'TanStack Query v5',
 			'React Hook Form',
 			'Zod'
 		]
 	},
 	{
-		title: 'Payments, auth, and security',
-		items: ['Paystack', 'JWT (jose)', 'bcrypt', 'OTP flows', 'OAuth-style integrations', 'Rate limiting']
+		title: 'Payments & auth',
+		items: [
+			'Paystack',
+			'JWT (jose)',
+			'bcrypt',
+			'OTP flows',
+			'OAuth (Meta/TikTok/X)',
+			'Rate limiting'
+		]
 	},
 	{
-		title: 'Infrastructure and monitoring',
+		title: 'Browser, AI & infra',
 		items: [
-			'GitHub',
-			'Vercel',
+			'Expo',
+			'React Native',
+			'Chrome Extension APIs (MV3)',
+			'Web Crypto API',
+			'Anthropic Claude API',
 			'Cloudflare',
 			'Pusher',
-			'PostHog',
 			'Sentry',
-			'Chrome Extension APIs',
-			'Postman',
-			'React Router v7'
+			'PostHog',
+			'Vite / Turbopack'
 		]
 	}
 ];
 
 export const experienceTimeline: ExperienceEntry[] = [
 	{
-		role: 'Software Engineer (Full-stack)',
-		timeline: 'July 2025-present',
-		company: 'TrimHQ',
+		role: 'Mobile Frontend Developer',
+		timeline: 'July 2026 – present',
+		company: 'AdminTrack',
 		location: 'Remote',
 		details: [
-			'Architected a creator-brand marketplace with campaign workflows, contract tooling, and dual-sided dashboards.',
-			'Implemented Paystack wallet deposits, withdrawals, webhook reconciliation, and transaction PIN security.',
-			'Migrated file storage to Cloudflare R2, replaced SSE with Pusher, and added Sentry + PostHog monitoring.'
+			'Built the Admin Track mobile frontend with Expo (React Native), TypeScript, and Expo Router for file-based navigation.',
+			'Designed a feature-based src/ architecture (app routes, features, providers, shared UI/lib) for scalable mobile development.',
+			'Implemented core app infrastructure with Zustand, TanStack Query, Zod, and Axios for state, data fetching, validation, and API access.',
+			'Established engineering standards with ESLint, Prettier, Husky, Commitlint, and lint-staged to enforce linting, formatting, type checks, and conventional commits.'
+		]
+	},
+	{
+		role: 'Frontend Developer (Part-time)',
+		timeline: 'March 2026 – June 2026',
+		company: 'HNG Tech',
+		location: 'Remote',
+		details: [
+			'Worked across multiple product builds during a competitive, cohort-based tech internship, shipping under fast, stage-based deadlines.',
+			'Built a real-time dashboard with live data updates and frontend state management under production-style requirements.',
+			'Contributed to an AI-powered fullstack project, applying LLM integration and prompt-driven features to a real product.',
+			'Collaborated with a distributed team to design, build, and deploy, strengthening code review and frontend architecture skills.'
+		]
+	},
+	{
+		role: 'Fullstack Software Engineer (Part-time)',
+		timeline: 'July 2025 – present',
+		company: 'TrimHQ',
+		location: 'Remote · trim-hq.com',
+		details: [
+			'Architected a production creator–brand marketplace with campaign management, contracts, deliverables, and dual-sided dashboards, 20+ MongoDB models across 500+ TypeScript/React files.',
+			'Implemented end-to-end Paystack payments: wallet deposits, creator withdrawals, webhook reconciliation, transaction PIN security, and spend caps for unverified brands.',
+			'Migrated file storage from MongoDB GridFS to Cloudflare R2 with presigned S3 uploads, reducing app-server load and improving scalability for large campaign deliverables.',
+			'Built dual-sided KYC/KYB verification integrating Prembly (BVN, ID upload, CAC, director BVN) with spend-limit enforcement and verification-gated brand onboarding.',
+			'Shipped JWT session auth with email OTP and Google/Facebook OAuth, Sentry error monitoring, PostHog analytics, Upstash Redis rate limiting, and PWA support with HTTP caching.'
 		]
 	},
 	{
 		role: 'IT Support / System Engineer',
-		timeline: 'July 2025-May 2026',
+		timeline: 'July 2025 – May 2026',
 		company: 'TopTech Engineering Ltd',
 		location: 'Lagos, Nigeria',
 		details: [
-			'Designed and built an internal ticketing system that streamlined issue reporting and resolution.',
-			'Delivered end-to-end technical support for networking, hardware, and connectivity across 20+ devices.',
-			'Operated specialized data sanitization equipment in line with hardware handling standards.'
+			'Designed and developed a full internal ticketing and support system to streamline issue reporting, tracking, and resolution, reducing average resolution time across the team.',
+			'Provided end-to-end technical support for networking and hardware issues across multiple environments, maintaining near-zero downtime.',
+			'Diagnosed and resolved software, hardware, and connectivity issues across 20+ devices and systems.',
+			'Operated and maintained specialized data sanitization equipment (degaussing machine) in compliance with hardware handling standards.'
 		]
 	},
 	{
 		role: 'Software Engineer (Freelance)',
-		timeline: 'Jan 2025-July 2025',
+		timeline: 'Jan 2025 – July 2025',
 		company: 'Self-employed',
 		location: 'Remote',
 		details: [
-			'Designed and delivered 4+ full-stack web and mobile applications across e-commerce, logistics, and education.',
-			'Built a fantasy sports platform with live scoring, matchmaking, and regional leaderboards.',
-			'Provided ongoing support to keep client products stable after launch.'
+			'Designed, developed, and deployed 4+ full-stack web and mobile applications for clients across e-commerce, logistics, and education, all delivered on schedule.',
+			'Developed a fantasy sports application with real-time match scoring, head-to-head matchmaking, regional rankings, and continental leaderboards using React, Node.js, and Firebase.',
+			'Provided ongoing client support and maintained application reliability post-launch across all projects.'
 		]
 	},
 	{
-		role: 'IT Specialist',
-		timeline: 'Mar 2023-Aug 2023',
+		role: 'IT Specialist (Internship)',
+		timeline: 'Mar 2023 – Aug 2023',
 		company: 'Heritage Energy Operational Services Ltd (HEOSL)',
 		location: 'Warri, Delta State',
 		details: [
-			'Built a Django-based testing platform that automated internship recruitment workflows.',
-			'Developed a hospital management system prototype across HTML/CSS/PHP and Django.',
-			'Delivered IT support and diagnostics across 50+ staff devices and systems.'
+			'Built a Django-based computer-based testing app that fully automated internship recruitment and eliminated manual HR effort.',
+			'Developed a hospital management system prototype on two parallel stacks (HTML/CSS/PHP and Django/Python) under production constraints.',
+			'Delivered IT support across the organisation, diagnosing hardware issues and minimising downtime for 50+ staff members.'
 		]
+	}
+];
+
+export type EducationEntry = {
+	degree: string;
+	timeline: string;
+	school: string;
+	location: string;
+	details: string[];
+};
+
+export const educationTimeline: EducationEntry[] = [
+	{
+		degree: 'BSc Management Information Systems',
+		timeline: 'Jan 2021 – Jul 2024',
+		school: 'Covenant University',
+		location: 'Ogun State, Nigeria',
+		details: [
+			'Coursework: Database Management, Software Development (Python, Java, C, C#), Data Analytics, Business Process Management, IT Strategy & Governance, Project Management.'
+		]
+	},
+	{
+		degree: 'Senior Secondary School Certificate (SSCE)',
+		timeline: 'Sep 2017 – Mar 2019',
+		school: 'Willen Secondary School',
+		location: 'Delta State, Nigeria',
+		details: []
 	}
 ];
 
